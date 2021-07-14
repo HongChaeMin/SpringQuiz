@@ -10,10 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/lesson01/quiz")
+@RequestMapping("/lesson01/quiz02")
 @RestController
 public class Quiz02 {
 
+	@RequestMapping("/1")
 	public List<Map<String, Object>> printList() {
 		List<Map<String, Object>> list = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
@@ -74,7 +75,7 @@ public class Quiz02 {
 		return list;
 	}
 	
-	@RequestMapping("/2")
+	@RequestMapping("/3")
 	public ResponseEntity<Post> entity() {
 		Post post = new Post();
 		post.setTitle("안녕하세요 가입인사 드립니다");
