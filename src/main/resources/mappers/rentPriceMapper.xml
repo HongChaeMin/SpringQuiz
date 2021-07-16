@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.coals.lesson03.dao.RentPriceDAO">
+ 
+ 	<select id="selectRentPrice" parameterType="int" resultType="com.coals.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 		<!-- jdbc 오류때메 안된다 쌤한테 물어볼것!! bo랑 dao 다 따로 따로 만들어도 안됨 헛짓거리함... 너무 화난다
+ 		원인: java.sql.SQLException: 매개변수 색인이 범위를 벗어났습니다(1 > 매개변수 수, 0). -->
+        <![CDATA[
+        	`rentPrice < #{rentPrice}
+        ]]>
+ 	</select>
+ 
+ </mapper>

@@ -16,4 +16,7 @@ public class RealEstateBO {
 		return realEstateDAO.selectRealEstate(id);
 	}
 	
+	public RealEstate getAreaPrice(int area, int price) {
+		return realEstateDAO.selectAreaPrice(area, price);
+	}
 }
