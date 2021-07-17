@@ -1,5 +1,7 @@
 package com.coals.lesson03.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,11 @@ public class RealEstateBO {
 		return realEstateDAO.selectRealEstate(id);
 	}
 	
-	public RealEstate getAreaPrice(int area, int price) {
-		return realEstateDAO.selectAreaPrice(area, price);
+	public List<RealEstate> getRentPriceList(Integer rentPrice) {
+		return realEstateDAO.selectRentPriceList(rentPrice);
+	}
+	
+	public List<RealEstate> getAreaPriceList(int area, int price) {
+		return realEstateDAO.selectAreaPriceList(area, price);
 	}
 }

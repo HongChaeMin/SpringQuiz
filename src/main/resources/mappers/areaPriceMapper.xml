@@ -5,7 +5,7 @@
  
  <mapper namespace="com.coals.lesson03.dao.RealEstateDAO">
  
- 	<select id="selectAreaPrice" parameterType="map" resultType="com.coals.lesson03.model.RealEstate">
+ 	<select id="selectAreaPriceList" parameterType="map" resultType="com.coals.lesson03.model.RealEstate">
  		SELECT
  			`id`
  			, `realtorId`
