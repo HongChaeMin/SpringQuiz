@@ -22,4 +22,68 @@
  			`id` = #{id}
  	</select>
  
+ 	<select id="selectRentPriceList" parameterType="map" resultType="com.coals.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+        <![CDATA[
+        	`rentPrice` < #{rentPrice}
+        ]]>
+ 	</select>
+ 	
+ 	<select id="selectAreaPriceList" parameterType="map" resultType="com.coals.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			`area` &gt; #{area}
+ 			AND
+ 			`price` &lt; #{price}
+ 		ORDER BY `id` DESC
+ 	</select>
+ 
+ 	<insert id="insertRealEstate" parameterType="map">
+ 		INSERT INTO `real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 			, now()
+ 			, now()
+ 		)
+ 	</insert>
+ 
  </mapper>

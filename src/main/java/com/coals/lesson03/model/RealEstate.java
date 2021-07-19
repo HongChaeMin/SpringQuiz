@@ -62,11 +62,11 @@ public class RealEstate {
 		this.price = price;
 	}
 
-	public int getRentPrice() {
+	public Integer getRentPrice() {
 		return rentPrice;
 	}
 
-	public void setRentPrice(int rentPrice) {
+	public void setRentPrice(Integer rentPrice) {
 		this.rentPrice = rentPrice;
 	}
 
