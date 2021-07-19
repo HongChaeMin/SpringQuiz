@@ -49,7 +49,7 @@ public class RealEstateRestController {
 		realEstate.setPrice(100000);
 		realEstate.setRentPrice(null);
 		
-		return "입력 성공 : " + realEstateBO.getRealEstateInsert(realEstate);
+		return "입력 성공 : " + realEstateBO.insertRealEstate(realEstate);
 	}
 	
 	@RequestMapping("quiz02/2")
@@ -60,7 +60,7 @@ public class RealEstateRestController {
 		int price = 100000;
 		Integer rentPrice = 120;
 		
-		return "입력 성공 : " + realEstateBO.getRealEStateInsert(realtorId, address, area, type, price, rentPrice);
+		return "입력 성공 : " + realEstateBO.insertRealEstate(realtorId, address, area, type, price, rentPrice);
 	}
 	
 }

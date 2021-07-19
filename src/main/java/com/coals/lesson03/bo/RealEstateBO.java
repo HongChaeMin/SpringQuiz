@@ -26,11 +26,11 @@ public class RealEstateBO {
 		return realEstateDAO.selectAreaPriceList(area, price);
 	}
 	
-	public int getRealEstateInsert(RealEstate realEstate) {
+	public int insertRealEstate(RealEstate realEstate) {
 		return realEstateDAO.insertRealEstate(realEstate);
 	}
 	
-	public int getRealEStateInsert(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
+	public int insertRealEstate(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
 		return realEstateDAO.insertRealEstate(realtorId, address, area, type, price, rentPrice);
 	}
 	
