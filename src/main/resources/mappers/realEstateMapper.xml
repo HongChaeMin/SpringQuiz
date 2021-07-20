@@ -86,4 +86,20 @@
  		)
  	</insert>
  
+ 	<update id="updateRealEstate" parameterType="map">
+ 		UPDATE `real_estate`
+ 		SET
+ 			`price` = 70000
+ 			, `type` = '전세'
+ 		WHERE
+ 			`id` = #{id}
+ 	</update>
+ 	
+ 	<delete id="deleteRealEstate" parameterType="map">
+ 		DELETE
+ 		FROM `real_estate`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
+ 
  </mapper>

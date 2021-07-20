@@ -31,7 +31,7 @@ public class RealEstateRestController {
 		return realEstateBO.getRentPriceList(rentPrice);
 	}
 	
-	@RequestMapping("quiz01/3")
+	@RequestMapping("/quiz01/3")
 	public List<RealEstate> quiz01_3(
 			@RequestParam(value="area") int area,
 			@RequestParam(value="price") int price			
@@ -39,7 +39,7 @@ public class RealEstateRestController {
 		return realEstateBO.getAreaPriceList(area, price);
 	}
 	
-	@RequestMapping("quiz02/1")
+	@RequestMapping("/quiz02/1")
 	public String quiz02_1() {
 		RealEstate realEstate = new RealEstate();
 		realEstate.setRealtorId(3);
@@ -52,7 +52,7 @@ public class RealEstateRestController {
 		return "입력 성공 : " + realEstateBO.insertRealEstate(realEstate);
 	}
 	
-	@RequestMapping("quiz02/2")
+	@RequestMapping("/quiz02/2")
 	public String quiz02_2(@RequestParam("realtorId") int realtorId) {
 		String address = "썅떼빌리버 오피스텔 814호";
 		int area = 45;
@@ -61,6 +61,16 @@ public class RealEstateRestController {
 		Integer rentPrice = 120;
 		
 		return "입력 성공 : " + realEstateBO.insertRealEstate(realtorId, address, area, type, price, rentPrice);
+	}
+	
+	@RequestMapping("/quiz03") 
+	public String quiz03(@RequestParam("id") int id) {
+		return "입력 성공 : " + realEstateBO.updateRealEstate(id);
+	}
+	
+	@RequestMapping("/quiz04")
+	public String quiz04(@RequestParam("id") int id) {
+		return "삭제 성공 : " + realEstateBO.deleteRealEstate(id);
 	}
 	
 }
