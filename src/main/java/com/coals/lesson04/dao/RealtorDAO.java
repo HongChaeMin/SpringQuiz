@@ -9,6 +9,4 @@ public interface RealtorDAO {
 	
 	public void insertRealtor(Realtor realtor);
 
-	public Realtor selectRealtor(int id);
-	
 }

@@ -21,18 +21,5 @@
  			, #{grade}
  		)
  	</insert>
- 	
- 	<select id="selectRealtor" parameterType="int" resultType="com.coals.lesson04.model.Realtor">
- 		SELECT
- 			`id`
- 			, `office`
- 			, `phoneNumber`
- 			, `address`
- 			, `grade`
- 		FROM
- 			`realtor`
- 		WHERE 
- 			`id` = #{id};
- 	</select>
  
  </mapper>

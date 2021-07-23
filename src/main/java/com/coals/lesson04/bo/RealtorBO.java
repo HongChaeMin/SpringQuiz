@@ -16,8 +16,4 @@ public class RealtorBO {
 		realtorDAO.insertRealtor(realtor);
 	}
 
-	public Realtor selectRealtor(int id) {
-		return realtorDAO.selectRealtor(id);		
-	}
-	
 }
