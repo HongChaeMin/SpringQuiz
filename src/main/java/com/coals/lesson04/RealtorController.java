@@ -29,7 +29,7 @@ public class RealtorController {
 			) {
 		
 		realtorBO.insertRealtor(realtor);
-		// response 개체는 따로 만들어야 좋음
+		// response 객체는 따로 만들어야 좋음
 		
 		model.addAttribute("result", realtor);
 		model.addAttribute("subject", "공인중개사 정보");
