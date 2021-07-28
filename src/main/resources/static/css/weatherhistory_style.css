@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#warp {
+	height: 1200px;
+}
+
+.contents {
+	height: 1000px;
+}
+
+header {
+	background-color: rgb(051, 153, 255);
+}
+
+.content {
+	margin: 10px;
+}
+
+.content>table {
+	text-align: center;
+}
+
+li {
+	width: 100%;
+	font-weight: bold;
+	font-size: large;
+}
+
+.logo {
+	font-weight: bold;
+	font-size: xx-large;
+}

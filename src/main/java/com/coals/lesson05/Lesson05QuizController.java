@@ -5,11 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.coals.lesson04.model.Realtor;
+import com.coals.lesson05.bo.WeatherhistoryBO;
 import com.coals.lesson05.model.Member;
+import com.coals.lesson05.model.Weatherhistory;
 
 @Controller
 public class Lesson05QuizController {
@@ -174,6 +179,34 @@ public class Lesson05QuizController {
 		model.addAttribute("members", members);
 		
 		return "lesson05/quiz04";
+	}
+	
+	@Autowired
+	private WeatherhistoryBO weatherhistoryBO;
+	
+	@RequestMapping("/lesson05/quiz05")
+	public String quiz05(Model model) {
+		List<Weatherhistory> list = weatherhistoryBO.selectWeatherhistory();
+		
+		model.addAttribute("weatherhistory", list);
+		
+		return "lesson05/weatherhistory";
+	}
+	
+	@RequestMapping("/lesson05/weatherhistoryAddView")
+	public String weatherhistoryAddView() {
+		return "lesson05/weatherhistoryAddView";
+	}
+	
+	@RequestMapping("/lesson05/weatherhistoryAdd")
+	public String weatherhistoryAdd(@ModelAttribute Weatherhistory weatherhistroy, Model model) {
+		weatherhistoryBO.insertWeatherhistory(weatherhistroy);
+		
+		List<Weatherhistory> list = weatherhistoryBO.selectWeatherhistory();
+		
+		model.addAttribute("weatherhistory", list);
+		
+		return "/lesson05/weatherhistory";
 	}
 	
 }
