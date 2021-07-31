@@ -12,10 +12,10 @@ import com.coals.lesson02.model.Store;
 public class StoreBO {
 
 	@Autowired
-	private StoreDAO storeDAO;
+	private StoreDAO storeDAO6;
 	
 	public List<Store> getStoreList() {
-		return storeDAO.selectStoreList();
+		return storeDAO6.selectStoreList();
 	}
 	
 }

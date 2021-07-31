@@ -15,8 +15,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="weatherhistory_style.css">
-
 <link rel="stylesheet" type="text/css" href="/css/weatherhistory_style.css">
 
 </head>
@@ -47,16 +45,16 @@
 								<td>
 									<c:choose>
 										<c:when test="${weather.weather eq '맑음'}">
-											<img alt="맑음" src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
+											<img alt="맑음" src="/imgs/sunny.jpg">
 										</c:when>
 										<c:when test="${weather.weather eq '구름조금'}">
-											<img alt="구름조금" src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
+											<img alt="구름조금" src="/imgs/partlyCloudy.jpg">
 										</c:when>
 										<c:when test="${weather.weather eq '흐림'}">
-											<img alt="흐림" src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
+											<img alt="흐림" src="/imgs/cloudy.jpg">
 										</c:when>
 										<c:otherwise>
-											<img alt="비" src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+											<img alt="비" src="/imgs/rainy.jpg">
 										</c:otherwise>
 									</c:choose>
 								

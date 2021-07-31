@@ -12,11 +12,11 @@ import com.coals.lesson02.bo.StoreBO;
 public class StoreRestController {
 
 	@Autowired
-	private StoreBO storeBO;
+	private StoreBO storeBO6;
 	
 	@RequestMapping("/lesson02/quiz01")
 	public List<com.coals.lesson02.model.Store> printStore() {
-		List<com.coals.lesson02.model.Store> list = storeBO.getStoreList();
+		List<com.coals.lesson02.model.Store> list = storeBO6.getStoreList();
 		return list;
 	}
 	
