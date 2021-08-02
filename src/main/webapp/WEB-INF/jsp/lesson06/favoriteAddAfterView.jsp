@@ -18,7 +18,7 @@
 
 	<div class="container">
 		<h1>즐겨찾기 목록</h1>
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>No</th>

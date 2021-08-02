@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.coals.lesson06.bo.FavoriteBO;
 
@@ -21,19 +22,22 @@ public class Quiz06Controller {
 	}
 	
 	@PostMapping("/lesson06/favoriteAddData")
-	public void favoriteAddData(
+	@ResponseBody
+	public String favoriteAddData(
 			Model model
 			, @RequestParam("name") String name
 			, @RequestParam("url") String url
 			) {
 		favoriteBO.insertFavorite(name, url);
+		
+		return "success";
 	}
 	
 	@RequestMapping("/lesson06/favoriteAddAfter")
 	public String favoriteAddAfter(Model model) {
 		model.addAttribute("favorite", favoriteBO.selectFavorite());
 		
-		return "lesson06/favoriteAddAfter";
+		return "lesson06/favoriteAddAfterView";
 	}
 	
 }

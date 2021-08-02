@@ -43,7 +43,6 @@
 			        url:"/lesson06/favoriteAddData",
 			        data: {'name':name, 'url':url},
 			        success : function(data) {
-			        	alert('success');
 			        	location.href = "/lesson06/favoriteAddAfter";
 			        }, error : function(e) {
 			        	alert("error : " + e);
