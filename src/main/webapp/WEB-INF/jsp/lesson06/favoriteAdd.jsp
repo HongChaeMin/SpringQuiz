@@ -19,22 +19,30 @@
 		<b>제목</b>
 		<input type="text" class="form-control" id="name">
 		<b>주소</b>
-		<input type="text" class="form-control" id="url"><br>
-		<input type="button" id="addBtn" class="btn btn-success" value="추가">
+		<div class="d-flex justify-content-between">
+			<input type="text" class="form-control col-10" id="url">
+			<button class="btn btn-primary col-1" id="urlCheckBtn">중복확인</button>
+		</div>
+		<div id="urlStatusArea"></div><br>
+		<input type="submit" id="addBtn" class="btn btn-success" value="추가">
 	</div>
 	
 	<script>
 		$(document).ready(function() {
+			var check = false;
+			
 			$('#addBtn').on('click', function(e) {
-				var name = $('#name').val().trim();
-				if(name == '') {
-					alert("제목을 입력하세요");
+				e.preventDefault();
+				
+				if (!check) {
+					alert("url 중복 확인을 해주세요");
 					return;
 				}
 				
-				var url = $('#url').val().trim();
-				if(url == '' || !url.startsWith('http') & !url.startsWith('https')) {
-					alert("주소를 입력하거나 주소가 http, https로 시작해야 합니다");
+				let name = $('#name').val().trim();
+				let url = $('#url').val().trim();
+				if(name == '') {
+					alert("제목을 입력하세요");
 					return;
 				}
 				
@@ -47,6 +55,30 @@
 			        }, error : function(e) {
 			        	alert("error : " + e);
 			        }
+				});
+			});
+			
+			$('#urlCheckBtn').on('click', function() {
+				$('#urlStatusArea').empty();
+				
+				let url = $('#url').val().trim();
+				if(url == '' || !url.startsWith('http') & !url.startsWith('https')) {
+					alert("주소를 입력하거나 주소가 http, https로 시작해야 합니다");
+					return;
+				}
+				
+				$.ajax({
+					type:'get',
+					url : '/lesson06/isDuplication',
+					data : {'url' : url},
+					success : function(data) {
+						if (data.isDupliction == true) {
+							check = true;
+							$('#urlStatusArea').append('<small class="text-danger">중복된 url 입니다</small>');
+						}
+					}, error : function(e) {
+						alert("error : " + e);
+					}
 				});
 			});
 		});

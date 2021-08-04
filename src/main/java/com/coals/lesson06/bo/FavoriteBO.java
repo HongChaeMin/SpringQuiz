@@ -21,5 +21,13 @@ public class FavoriteBO {
 	public List<Favorite> selectFavorite() {
 		return favoriteDAO.selectFavorite();
 	}
+
+	public Boolean existFavoriteByUrl(String url) {
+		return favoriteDAO.existFavoriteByUrl(url);
+	}
+
+	public void deleteFavorite(int id) {
+		favoriteDAO.deleteFavorite(id);		
+	}
 	
 }

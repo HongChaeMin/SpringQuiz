@@ -32,11 +32,35 @@
 						<td>${favorite.id}</td>
 						<td>${favorite.name}</td>
 						<td>${favorite.url}</td>
+						<c:set var="id" value="${favorite.id}" />
+						<td><input type="button" id="deleteBtn" class="btn btn-danger" value="삭제"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+			
+			$('#deleteBtn').on('click', function() {
+				var id = ${id};
+				alert(id);
+				
+				$.ajax({
+					type : 'get',
+					url : '/lesson06/deleteFavorite',
+					data : {'id' : id},
+					success : function(data) {
+						location.href = "/lesson06/favoriteAddAfter";
+					}, error : function(e) {
+						alert("error : " + e);
+					}
+				});
+			});
+			
+		});
+	</script>
 
 </body>
 </html>
