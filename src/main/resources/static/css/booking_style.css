@@ -1,0 +1,15 @@
+@charset "UTF-8";
+header {height: 100px;}
+nav {height: 40px; background-color: peru;}
+.menu {color: #fff; background-color: peru; font-weight: bold;}
+.menu:hover {background-color: rgb(209, 174, 139); color:sienna}
+.content1 {height: 450px;}
+.content2 {height: 300px;}
+.font-size-40 {font-size: 40px;}
+.bg-color-gar {background-color: sienna;}
+.bg-color-yeangar {background-color: peru;}
+.check {color: #fff; font-size: 25px;}
+.color-whilt {color: #fff;}
+#id, #password, #name, #phoneNumber, #day {width: 300px !important;}
+footer {height: 80px;}
+table{text-align: center;}

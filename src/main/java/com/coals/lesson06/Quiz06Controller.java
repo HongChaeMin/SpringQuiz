@@ -1,5 +1,6 @@
 package com.coals.lesson06;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.coals.lesson06.bo.BookingBO;
 import com.coals.lesson06.bo.FavoriteBO;
+import com.coals.lesson06.model.Booking;
 
 @Controller
 public class Quiz06Controller {
 
 	@Autowired
 	private FavoriteBO favoriteBO;
+	
+	@Autowired
+	private BookingBO bookingBO;
 	
 	@RequestMapping("/lesson06/favoriteAdd")
 	public String favoriteAdd() {
@@ -64,6 +70,58 @@ public class Quiz06Controller {
 		favoriteBO.deleteFavorite(id);
 		
 		return "success";
+	}
+	
+	@RequestMapping("/lesson06/bookingMain")
+	public String mainView() {
+		return "lesson06/booking/bookingMain";
+	}
+	
+	@RequestMapping("/lesson06/bookingReservation")
+	public String reservationView() {
+		return "lesson06/booking/bookingReservation";
+	}
+	
+	@RequestMapping("/lesson06/bookingReservationList")
+	public String reservationListView(Model model) {
+		model.addAttribute("bookingList", bookingBO.selectBooking());
+		
+		return "lesson06/booking/bookingReservationList";
+	}
+	
+	@RequestMapping("/lesson06/delete_booking")
+	@ResponseBody
+	public Map<String, Boolean> deleteBooking(
+			@RequestParam("booking_id") int id
+			) {
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("result", bookingBO.deleteBooking(id));
+		
+		return result;
+	}
+	
+	@RequestMapping("/lesson06/booking_add_data")
+	@ResponseBody
+	public String bookingAddData(
+				@RequestParam("name") String name
+				, @RequestParam("date") Date date
+				, @RequestParam("day") int day
+				, @RequestParam("headcount") int headcount
+				, @RequestParam("phoneNumber") String phoneNumber
+			) {
+		bookingBO.insertBooking(name, date, day, headcount, phoneNumber, "대기중");
+		
+		return "success";
+	}
+	
+	@RequestMapping("/lesson06/bookingCheck")
+	@ResponseBody
+	public Booking bookingCheck(
+				@RequestParam("name") String name
+			) {
+		Booking booking = bookingBO.selectBooking(name);
+		
+		return booking;
 	}
 	
 }

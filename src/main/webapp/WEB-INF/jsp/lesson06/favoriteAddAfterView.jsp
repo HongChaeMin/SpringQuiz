@@ -33,7 +33,11 @@
 						<td>${favorite.name}</td>
 						<td>${favorite.url}</td>
 						<c:set var="id" value="${favorite.id}" />
-						<td><input type="button" id="deleteBtn" class="btn btn-danger" value="삭제"></td>
+						<%-- (1) name속성과 value 속성을 이용해서 동적으로 삭제버튼 감지 --%>
+						<%-- <td><button type="button" name="delBtn" class="btn btn-danger" value="${favorite.id}">삭제</button></td> --%>
+					
+						<%-- (2) data를 이용해서 태그에 data를 임시 저장해놓기 --%>
+						<td><button type="button" class="favorite-btn btn btn-danger" data-favorite-id="${favorite.id}">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -43,18 +47,35 @@
 	<script>
 		$(document).ready(function() {
 			
-			$('#deleteBtn').on('click', function() {
-				var id = ${id};
+			// (1) name속성과 value 속성을 이용해서 동적으로 삭제버튼 감지
+			/* $('td').on('click', 'button[name=delBtn]', function() {
+				let id = $(this).attr('value');
 				alert(id);
+			}); */
+			
+			
+			// (2) data를 이용해서 태그에 data를 임시 저장해놓기
+			// 태그: data-favorite-id      data-    그 뒤부턴 우리가 이름을 정한다.
+			// 스크립트: $(this).data('favorite-id');
+			
+			$('#favorite-btn').on('click', function() {
+				e.preventDefault();
+				
+				var favoriteId = $(this).data('favorite-id');
+				//alert(favoriteId);
 				
 				$.ajax({
-					type : 'get',
-					url : '/lesson06/deleteFavorite',
-					data : {'id' : id},
-					success : function(data) {
-						location.href = "/lesson06/favoriteAddAfter";
-					}, error : function(e) {
-						alert("error : " + e);
+					type:'post'
+					, url:'/lesson06/quiz02/delete_favorite'
+					, data: {"favorite_id": favoriteId}
+					, success: function(data) {
+						if (data.result == 'success') {
+							location.reload();
+						} else {
+							alert("삭제 실패했습니다. 관리자에게 문의해주세요.");
+						}
+					}, error: function(e) {
+						alert("error: " + e);
 					}
 				});
 			});
